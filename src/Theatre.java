@@ -5,9 +5,11 @@ public class Theatre {
 
     public static void main(String[] args) {
 
-        Actor firstActor = new Actor("Иван", "Васильевич", Gender.MALE, 185);
-        Actor secondActor = new Actor("Жорж", "Милославский", Gender.MALE, 180);
-        Actor thirdActor = new Actor("Марфа", "Васильевна", Gender.FEMALE, 170);
+        Actor ivanGrozniy = new Actor("Иван", "Рюрикович", Gender.MALE, 185);
+        Actor georgMiloslavskiy = new Actor("Жорж", "Милославский", Gender.MALE, 180);
+        Actor marphaVasilievna = new Actor("Марфа", "Рюриковна", Gender.FEMALE, 170);
+        Actor ivanBunsha = new Actor("Иван", "Рюрикович", Gender.MALE, 184);
+        Actor lgeDmitriy = new Actor("Дмитрий", "Рюрикович", Gender.MALE, 185);
 
         Director firstDirector = new Director("Леонид", "Гайдай", Gender.MALE, 100500);
         Director secondDirector = new Director("Никита", "Михалков", Gender.MALE, 1);
@@ -19,17 +21,18 @@ public class Theatre {
                 "Танец маленьких утят", "Волочкова");
 
         System.out.println("\nСпектакль '" + simplShow.getTitle() + "'");
-        simplShow.addNewActor(firstActor);
-        simplShow.addNewActor(secondActor);
+        simplShow.addNewActor(ivanGrozniy);
+        simplShow.addNewActor(georgMiloslavskiy);
+        simplShow.addNewActor(lgeDmitriy);
         simplShow.addNewActor(null);
 
         System.out.println("\nОпера '" + opera.getTitle() + "'");
-        opera.addNewActor(secondActor);
-        opera.addNewActor(thirdActor);
+        opera.addNewActor(georgMiloslavskiy);
+        opera.addNewActor(marphaVasilievna);
 
         System.out.println("\nБаллет '" + ballet.getTitle() + "'");
-        ballet.addNewActor(firstActor);
-        ballet.addNewActor(thirdActor);
+        ballet.addNewActor(ivanGrozniy);
+        ballet.addNewActor(marphaVasilievna);
 
         System.out.println("\nСписок актеров в спектакле:");
         simplShow.printListOfActors();
@@ -46,22 +49,24 @@ public class Theatre {
 
         System.out.println();
 
-        simplShow.changeActor(thirdActor, "Жорж");
+        simplShow.changeActor(ivanBunsha, "Рюрикович");
         System.out.println("\nСписок актеров в спектакле:");
         simplShow.printListOfActors();
 
         System.out.println();
-        opera.changeActor(firstActor, "Бориска");
+        opera.changeActor(ivanGrozniy, "Бориска");
         System.out.println();
-        opera.changeActor(null, "Жорж");
+        opera.changeActor(null, "Милославский");
         System.out.println();
-        opera.changeActor(secondActor, "Жорж");
+        opera.changeActor(georgMiloslavskiy, "Милославский");
         System.out.println();
-        opera.changeActor(thirdActor, "Бориска");
+        opera.changeActor(marphaVasilievna, "Бориска");
 
         System.out.println("\nЛибретто оперы.");
         opera.printLibretto();
         System.out.println("\nЛибретто балета.");
         ballet.printLibretto();
+
+        System.out.println();
     }
 }

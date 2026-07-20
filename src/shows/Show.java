@@ -33,8 +33,18 @@ public class Show {
         System.out.println("Из участников '" + title + "' удален актер:\n" + actor.toString());
     }
 
-    public void changeActor(Actor newActor, String oldActorName) {
-        Actor oldActor = findActorByName(oldActorName);
+    public void changeActor(Actor newActor, String oldActorSurname) {
+        ArrayList<Actor> oldActors = findActorsBySurname(oldActorSurname);
+        Actor oldActor = null;
+
+        for(Actor actor: oldActors)
+        {
+            if(!actor.equals(newActor))
+            {
+                oldActor = actor;
+                break;
+            }
+        }
 
         if (checkNewActor(newActor) && oldActor != null) {
             removeActor(oldActor);
@@ -56,21 +66,20 @@ public class Show {
         return true;
     }
 
-    private Actor findActorByName(String actorName) {
-        Actor findedActor = null;
+    private ArrayList<Actor> findActorsBySurname(String actorSurname) {
+        ArrayList<Actor> foundActors = new ArrayList<>();
 
         for (Actor actor : listOfActors) {
-            if (actor.getName().equals(actorName)) {
-                findedActor = actor;
-                break;
+            if (actor.getSurname().equals(actorSurname)) {
+                foundActors.add(actor);
             }
         }
 
-        if (findedActor == null) {
-            System.out.println("Актер по имени " + actorName + " не найден в списке участников '" + title + "'.");
+        if (foundActors.isEmpty()) {
+            System.out.println("Актер по фамилии " + actorSurname + " не найден в списке участников '" + title + "'.");
         }
 
-        return findedActor;
+        return foundActors;
     }
 
     public String getTitle() {
